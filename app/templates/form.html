@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="static/styles.css">
+
+    <title>Hello, {{ title }}!</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="" method="post" class="form" name="coke" role="form">
+        <div class="col-sm-12 py-2 justify-content-center">
+        <h1>{{ title }}</h1>
+        </div>
+        <div class="alert alert-info alert-dissmissible fade show">
+            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+            <strong>Hi!</strong> To dispense a drink select your choices, and click dispense at the bottom!
+        </div>
+        <div class="row">
+            <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                <h5>{{ drinks[0] }}</h5>
+            </div>
+
+                {% for subfield in form.coke %}
+                    <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                        <tr>
+                            <td>{{ subfield(class="btn-check") }}</td>
+                            <td>{{ subfield.label(class="btn btn-outline-primary") }}</td>
+                        </tr>
+                  </div>
+                  
+                {% endfor %}
+                
+                    <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly ">
+                        <h5>{{ drinks[1] }}</h5>
+                    </div>
+        
+                        {% for subfield in form.sprite %}
+                            <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                <tr>
+                                    <td>{{ subfield(class="btn-check") }}</td>
+                                    <td>{{ subfield.label(class="btn btn-outline-primary") }}</td>
+                                </tr>
+                          </div>
+                          
+                        {% endfor %}
+                       
+                           
+                            <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                <h5>{{ drinks[2] }}</h5>
+                            </div>
+                                
+                                {% for subfield in form.lime %}
+                                    <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                        <tr>
+                                        <td>{{ subfield(class="btn-check") }}</td>
+                                        <td>{{ subfield.label(class="btn btn-outline-primary") }}</td>
+                                        </tr>
+                                  </div>
+                                  
+                                {% endfor %}
+                                
+            
+    <div class="row">
+        <div class="alert alert-warning d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill" aria-label="exclamation-warning-triangle"></i>
+            <div>
+              Make sure you have a cup under the dispenser!
+            </div>
+          </div>
+        <div class="d-grid gap-2 col-8 mx-auto py-2">
+            
+            <button type="submit" class="btn btn-success">Mix!</button>
+
+    </div>
+    </div>
+    </div>
+
+    </body>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+{% endblock %}
