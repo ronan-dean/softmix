@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles.css">
+
+    <title>Hello, {{ title }}!</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <div class="alert alert-info alert-dissmissible fade show">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Hi!</strong> To dispense a drink select your choices, and click dispense at the bottom!
+        </div>
+        <div class="row">
+            <div class="col-sm-4 py-2 text-center">
+                <h5>{{ drinks[0] }}</h5>
+            </div>
+            <div class="col-sm-8 py-2">
+                <div class="btn-group d-flex" data-toggle="buttons">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="{{ drinks[0] }}" id="none{{ drinks[0]}}">None
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="{{ drinks[0] }}" id="small{{ drinks[0]}}">Small
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="{{ drinks[0] }}" id="large{{ drinks[0]}}">Large
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 py-2 text-center">
+                <h5>{{ drinks[1] }}</h5>
+            </div>
+            <div class="col-sm-8 py-2">
+                <div class="btn-group d-flex" data-toggle="buttons">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="{{ drinks[1] }}" id="none{{ drinks[1]}} ">None
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="{{ drinks[1] }}" id="small{{ drinks[1]}}">Small
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="{{ drinks[1] }}" id="large{{ drinks[1]}}">Large
+                    </label>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-sm-4 py-2 text-center">
+            <h5>{{ drinks[2] }}</h5>
+        </div>
+        <div class="col-sm-8 py-2">
+            <div class="btn-group d-flex" data-toggle="buttons">
+                <label class="btn btn-primary">
+                    <input type="radio" name="{{ drinks[2] }}" id="none{{ drinks[2]}}">None
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="{{ drinks[2] }}" id="small{{ drinks[2]}}">Small
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="{{ drinks[2] }}" id="large{{ drinks[2]}}">Large
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12" py-2>
+            <button type="button" class="btn btn-success btn-block">Mix!</button>
+    </div>
+    </div>
+    </div>
+    </body>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
