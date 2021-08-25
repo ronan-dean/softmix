@@ -7,6 +7,7 @@ import os
 Bootstrap(app)
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])
+
 def index():
     form = DrinkForm(request.form)
     if request.method == 'POST':
@@ -15,3 +16,7 @@ def index():
 
     drinks = ["Coke", "Sprite", "Soda Water"]
     return render_template('form.html', title='Softmix.io', drinks=drinks, form=form)
+@app.route('/settings/', methods=['GET', 'POST'])
+def settings():
+    drinks = ["Coke", "Sprite", "Soda Water"]
+    return render_template('index.html', title='softmix.io', drinks=drinks)
