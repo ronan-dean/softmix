@@ -1,5 +1,5 @@
 from flask.helpers import get_flashed_messages
-from app.forms import DrinkForm
+from app.forms import DrinkForm, DrinkSelection
 from flask import render_template, request, flash
 from flask_bs4 import Bootstrap
 from app import app 
@@ -18,5 +18,8 @@ def index():
     return render_template('form.html', title='Softmix.io', drinks=drinks, form=form)
 @app.route('/settings/', methods=['GET', 'POST'])
 def settings():
-    drinks = ["Coke", "Sprite", "Soda Water"]
-    return render_template('index.html', title='softmix.io', drinks=drinks)
+    form = DrinkSelection(request.form)
+    if request.method == 'POST':
+        flash(f'entered: {form.syrup1.data}, {form.syrup2.data}, {form.syrup3.data}')
+        return str(get_flashed_messages())
+    return render_template('settings.html', title='softmix.io', form=form)
