@@ -41,18 +41,31 @@
     <div class="row">
         <div class="col-sm-6 py-2">
             <form action="" method="post" class="form" name="drinkselection" role="form">
-                <div class="form-group">
-                    {{ wtf.form_field(form.syrup1, class='form-control', placeholder="Coke") }}
+                {% for key, value in result.items() %}
                 <div class="row form-group">
-                    {{ wtf.form_field(form.syrup2, class='form-control', placeholder="Sprite") }}
-                </div>
-                <div class="row form-group">
-                    {{ wtf.form_field(form.syrup3, class='form-control', placeholder="Lime") }}
-                </div>
+                {{ form|attr(key)() }}
+                {% for key, value in result2.items() %}
+                {{ form|attr(key)() }}
+            </div>
+                {% endfor %}
+                {% endfor %}
+              
+                
                 <div class="row form-group">
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
                 </div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for msgs in messages %}
+                    <div class="row py-2">  
+                    <div class="alert alert-primary" role="alert">
+                            {{msgs}}
+                    </div>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
         </div>
         <div class=col-sm-6>
             Cleaning mode here
