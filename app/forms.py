@@ -16,6 +16,7 @@ class DrinkForm(FlaskForm):
     lime = RadioField('lime', choices =[('none','None'),('small','Small'),('large','Large')])
     submit = SubmitField('Submit')
 class DrinkSelection(FlaskForm):
+    StringField = StringField('static field')
     #newSyrups = StringField('staic field')
     #newSyrupsLabel = Label('static field', 'base')
     submit = SubmitField('Submit')

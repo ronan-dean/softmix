@@ -1,23 +1,20 @@
-from app.forms import DrinkSelection
-from wtforms.fields.core import StringField
 
 
-syrup = []
 
-result = {
-    'name': 'currentSyrups',
-    '_id': 'bigbrain',
-    'pump0': 'sprite',
-    'pump1': 'coke',
-    'pump2': 'soda',
+
+
+pumpOptions = {
+    'pump': 'currentSyrups',
+    'pump1': 'bigbrain',
+    'pump2': 'sprite',
+    'pump3': 'coke',
+    'pump4': 'soda'
 }
-class form:
-    pumpForms = []
-    del result['name']
-    del result['_id']
-    for key, value in result.items():
-        setattr(DrinkSelection, key, StringField(value))
-    print(result)
-    
-form()
+
+for key, value in pumpOptions.items():
+    print(key, value)
+print(len(pumpOptions.items()))
+print("All done")
+
+
 

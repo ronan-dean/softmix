@@ -42,7 +42,29 @@ def settings():
     result2 = result
     for key, value in result.items():
         setattr(DrinkSelection, key, Label('static field', str(key) + str(" currently has ") + value))
-    DrinkSelection.upSyrup = StringField('upSyrup')
-    for key, value in result2.items():
-        setattr(DrinkSelection, key, StringField(str(key)))
     return render_template('settings.html', title='softmix.io', form=form, result=result, result2=result2)
+names =  {
+    'name1': 'currentSyrups',
+    'name2': 'bigbrain',
+    'name3': 'sprite',
+    'name4': 'coke',
+    'name5': 'soda',
+}
+names2 =  {
+    'name1': 'currentSyrups',
+    'name2': 'bigbrain',
+    'name3': 'sprite',
+    'name4': 'coke',
+    'name5': 'soda',
+}
+@app.route('/settingsbeta/', methods=['GET', 'POST'])
+def settingsbeta():
+    class F(FlaskForm):
+        methods=['GET', 'POST']
+        pass
+    F.username = StringField(label='username')
+    for key, value in names.items():
+        setattr(F, key, StringField(label=value.title(), default=value))
+    form = F(request.form)
+    return render_template('settingsbeta.html', title='softmix.io', form=form, names=names, names2=names2)
+

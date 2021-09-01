@@ -40,17 +40,12 @@
     <div class="row">
         <div class="col-sm-6 py-2">
             <form action="" method="post" class="form" name="drinkselection" role="form">
-                {% for key, value in result.items() %}
-                <div class="row form-group">
-                {{ form|attr(key)}}
-                  
-            </div>
-                  {% endfor %}
-                  {% for key, value in result2.items() %}
-                  {{ form|attr(key)() }}
-                {% endfor %}
-              
-                
+                {% for key, value in names.items() %}
+                <div class="row form-group py-2">
+                    {{ form|attr(key) }}
+                    
+            </div>  
+            {% endfor %}
                 <div class="row form-group">
                     <button type="submit" class="btn btn-success">Save</button>
                 </div>
