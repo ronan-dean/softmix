@@ -7,6 +7,7 @@ from app import app
 import os
 from flask_pymongo import PyMongo
 from flask_wtf import FlaskForm
+from app.backend.fillscript import dispense # if not connected to the ardunio this will prevent the server from starting
 
 Bootstrap(app)
 app.config["MONGO_URI"] = "mongodb://localhost:27017/softmix"
@@ -19,36 +20,29 @@ db = mongo.db
 
 def index():
     form = DrinkForm(request.form)
+    names = db.alpha.find_one({"name": "currentSyrups"})
+    del names["_id"]
+    del names["name"]
     if request.method == 'POST':
-        flash('Coke: {} Sprite {} Soda Water {}'.format(form.coke.data, form.sprite.data, form.lime.data))
+        flash("Dispensing: Pump0: {} Pump1: {} Pump2: {} Pump3: {} Pump4: {}".format(form.pump0.data, form.pump1.data, form.pump2.data, form.pump3.data, form.pump4.data))
+        #dispense(int(form.pump0.data), 0)
+        dispense(int(form.pump1.data), 1)
+        #dispense(int(form.pump2.data), 2)
+        #dispense(int(form.pump3.data), 3)
+        #dispense(int(form.pump4.data), 4)
         return str(get_flashed_messages())
-
     drinks = ["Coke", "Sprite", "Soda Water"]
-    return render_template('form.html', title='Softmix.io', drinks=drinks, form=form)
-@app.route('/settings/', methods=['GET', 'POST'])
-def settings():
-    class DrinkSelection(FlaskForm):
-        upSyrup = StringField('upSyrup')
-        submit = SubmitField('Submit')
-    form = DrinkSelection(request.form)
-    if request.method == 'POST':
-        result1 = db.alpha.find_one_and_update({"name": "currentSyrups"}, {"$set": {'pump0': form.syrup1.data, 'pump1': form.syrup2.data, 'pump2': form.syrup3.data}})
-        result1
-        flash("Your syrups have been updated!")
-        return redirect(request.url)
-    result = db.alpha.find_one({"name": "currentSyrups"})
-    del result["_id"]
-    del result["name"]
-    result2 = result
-    for key, value in result.items():
-        setattr(DrinkSelection, key, Label('static field', str(key) + str(" currently has ") + value))
-    return render_template('settings.html', title='softmix.io', form=form, result=result, result2=result2)
+    return render_template('form.html', title='Softmix.io', drinks=names, form=form)
+
 names =  {
     'name1': 'currentSyrups',
     'name2': 'bigbrain',
     'name3': 'sprite',
     'name4': 'coke',
     'name5': 'soda',
+    'name6': 'soda',
+    'name7': 'soda',
+    'name8': 'soda',
 }
 names2 =  {
     'name1': 'currentSyrups',
@@ -63,6 +57,9 @@ def settingsbeta():
         methods=['GET', 'POST']
         pass
     F.username = StringField(label='username')
+    names = db.alpha.find_one({"name": "currentSyrups"})
+    del names["_id"]
+    del names["name"]
     for key, value in names.items():
         setattr(F, key, StringField(label=value.title(), default=value))
     form = F(request.form)

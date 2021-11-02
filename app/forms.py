@@ -11,9 +11,14 @@ mongo = PyMongo(app)
 db = mongo.db
 pumpForms = []
 class DrinkForm(FlaskForm):
-    coke = RadioField('coke', choices =[('none','None'),('small','Small'),('large','Large')])
-    sprite = RadioField('sprite', choices =[('none','None'),('small','Small'),('large','Large')])
-    lime = RadioField('lime', choices =[('none','None'),('small','Small'),('large','Large')])
+    names = db.alpha.find_one({"name": "currentSyrups"})
+    del names["_id"]
+    del names["name"]
+    pump0 = RadioField(f"names['pump0']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
+    pump1 = RadioField(f"names['pump1']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
+    pump2 = RadioField(f"names['pump2']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
+    pump3 = RadioField(f"names['pump3']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
+    pump4 = RadioField(f"names['pump4']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
     submit = SubmitField('Submit')
 class DrinkSelection(FlaskForm):
     StringField = StringField('static field')

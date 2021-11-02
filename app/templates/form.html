@@ -25,7 +25,7 @@
                 <a class="nav-link active" aria-current="page" href="#">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/settings">Settings</a>
+                <a class="nav-link" href="/settingsbeta/">Settings</a>
               </li>
             </ul>
           </div>
@@ -41,10 +41,10 @@
         </div>
         <div class="row">
             <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
-                <h5>{{ drinks[0] }}</h5>
+                <h5>{{ drinks['pump0'] }}</h5>
             </div>
 
-                {% for subfield in form.coke %}
+                {% for subfield in form.pump0 %}
                     <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
                         <tr>
                             <td>{{ subfield(class="btn-check") }}</td>
@@ -55,10 +55,10 @@
                 {% endfor %}
                 
                     <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly ">
-                        <h5>{{ drinks[1] }}</h5>
+                        <h5>{{ drinks['pump1'] }}</h5>
                     </div>
         
-                        {% for subfield in form.sprite %}
+                        {% for subfield in form.pump1 %}
                             <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
                                 <tr>
                                     <td>{{ subfield(class="btn-check") }}</td>
@@ -70,10 +70,10 @@
                        
                            
                             <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
-                                <h5>{{ drinks[2] }}</h5>
+                                <h5>{{ drinks['pump2'] }}</h5>
                             </div>
                                 
-                                {% for subfield in form.lime %}
+                                {% for subfield in form.pump2 %}
                                     <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
                                         <tr>
                                         <td>{{ subfield(class="btn-check") }}</td>
@@ -82,7 +82,34 @@
                                   </div>
                                   
                                 {% endfor %}
-                                
+                            
+                                <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                  <h5>{{ drinks['pump3'] }}</h5>
+                              </div>
+                                  
+                                  {% for subfield in form.pump3 %}
+                                      <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                          <tr>
+                                          <td>{{ subfield(class="btn-check") }}</td>
+                                          <td>{{ subfield.label(class="btn btn-outline-primary") }}</td>
+                                          </tr>
+                                    </div>
+                                    
+                                  {% endfor %}
+
+                                  <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                    <h5>{{ drinks['pump4'] }}</h5>
+                                </div>
+                                    
+                                    {% for subfield in form.pump4 %}
+                                        <div class="col-sm-3 py-2 justify-content-center d-flex justify-content-sm-evenly">
+                                            <tr>
+                                            <td>{{ subfield(class="btn-check") }}</td>
+                                            <td>{{ subfield.label(class="btn btn-outline-primary") }}</td>
+                                            </tr>
+                                      </div>
+                                      
+                                    {% endfor %}
             
     <div class="row">
         <div class="alert alert-warning d-flex align-items-center" role="alert">
