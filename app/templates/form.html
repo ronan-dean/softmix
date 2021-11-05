@@ -124,6 +124,20 @@
 
     </div>
     </div>
+    <div>
+      {% if dispensedFlag is true %}
+      {% with messages = get_flashed_messages() %}
+      
+      <div class="d-flex align-items-center gap-2">
+        {% for message in messages %}
+        <div class="alert alert-info alert-dissmissible fade show">
+        <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+        {{ message }}
+        </div>
+    {% endfor %}
+    {% endwith %}
+    </ul>
+    {% endif %}
     </div>
 
     </body>

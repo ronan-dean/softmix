@@ -24,16 +24,17 @@ def dispense(ml, pump):
                 bottleWeight = int(decoded_bytes)
                 detected = True
                 time.sleep(3)
-                on = 'p', str(pump)
-                off = 'n', str(pump)
-                ser.write(on)
+                b = pump.encode('utf-8')
+                ser.write(b)
                 while filled == False:
                     if int(decoded_bytes) - bottleWeight >= int(ml):
-                        ser.write(off) 
+                        ser.write(b'o') 
                         filled = True
                     else:
                         ser_bytes = ser.readline()
                         decoded_bytes = float(ser_bytes[0:len(ser_bytes)-2].decode("utf-8"))
+                        print(decoded_bytes)
             else:
                 ser_bytes = ser.readline()
                 decoded_bytes = float(ser_bytes[0:len(ser_bytes)-2].decode("utf-8"))
+                print(decoded_bytes)
