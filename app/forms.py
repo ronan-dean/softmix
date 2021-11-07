@@ -14,7 +14,7 @@ class DrinkForm(FlaskForm):
     names = db.alpha.find_one({"name": "currentSyrups"})
     del names["_id"]
     del names["name"]
-    pump0 = RadioField(f"names['pump0']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
+    pump0 = RadioField(f"names['pump0']", choices =[('0','0ML'),('100','100ML'),('200','200ML')])
     pump1 = RadioField(f"names['pump1']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
     pump2 = RadioField(f"names['pump2']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
     pump3 = RadioField(f"names['pump3']", choices =[('0','0ML'),('30','30ML'),('60','60ML')])
